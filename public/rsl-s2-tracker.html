@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>RSL Settings Tracker</title>
+<script src="/__/firebase/4.2.0/firebase-app.js"></script>
+<script src="/__/firebase/4.2.0/firebase-auth.js"></script>
+<script src="/__/firebase/4.2.0/firebase-database.js"></script>
+<script src="/__/firebase/init.js"></script>
+<script src="/scripts/scripts.js"></script>
+<script src="/scripts/dbsync.js"></script>
+<link rel="stylesheet" href="/css/style.css">
+
+<script>
+    window.onload = function() {
+        var elemlist = document.body.getElementsByTagName("*");
+        for (let i=0; i<elemlist.length; i++) {
+            cllist = elemlist[i].classList;
+            if (cllist.contains("progressive")) {
+                elemlist[i].addEventListener("click", function(e) { progressive_forward(this.id); });
+                elemlist[i].addEventListener("contextmenu", function(e) { progressive_reverse(this.id); e.preventDefault(); })
+            }
+            if (cllist.contains("toggleable") || cllist.contains("classless-toggle")) {
+                elemlist[i].addEventListener("click", function(e) { toggle(this.id); });
+                elemlist[i].addEventListener("contextmenu", function(e) { toggle(this.id); e.preventDefault(); }, false);
+            }
+            if (cllist.contains("counter")) {
+                elemlist[i].addEventListener("click", function(e) { var delta = (e.shiftKey) ? 10 : 1; increment_count(this.id, delta); });
+                elemlist[i].addEventListener("contextmenu", function(e) { var delta = (e.shiftKey) ? 10 : 1; decrement_count(this.id, delta); e.preventDefault(); }, false);
+            }
+        }
+        init(init_tracker);
+    };
+</script>
+
+</head>
+
+<body><main>
+
+<div id="notInitialized"><h2>Room not initialized</h2></div>
+
+<div class="fullframe">
+    <!-- Top Row -->
+    <span class="toprow">
+        <span class="toprow-subbox">
+            <span class="toprow-bridge-name">Bridge</span>
+            <span class="progressive toggle-off" id="bridgecondition" style="padding: 0 10px;">???</span>
+            <span class="counter" id="bridgecount" style="display: none;">1</span>
+        </span>
+        <span class="toprow-subbox">
+            <span class="counter" id="gbkcount" style="display: none;">1</span>
+            <span class="progressive toggle-off" id="gbkcondition" style="padding: 0 10px;">???</span>
+            <span class="toprow-gbk-name">Ganon BK</span>
+        </span>
+    </span>
+
+    <!-- Sanities and Shuffle row -->
+    <span class="centerrow">
+        <span class="centerrow-subbox">
+            <span class="centerrow-subbox-header">Settings</span>
+            <span class="centerrow-subbox-column">
+                <span class="progressive toggle-off" id="songs">Songs</span>
+                <span class="progressive toggle-off" id="shops">Shops</span>
+                <span class="progressive toggle-off" id="spiders">Spiders</span>
+                <span class="progressive toggle-off" id="scrubs">Scrubs</span>
+            </span>
+            <span class="centerrow-subbox-column">
+                <span class="progressive toggle-off" id="cows">Cows</span>
+                <span class="progressive toggle-off" id="sks">SKs</span>
+                <span class="progressive toggle-off" id="bks">BKs</span>
+                <span class="progressive toggle-off" id="dot">DoT</span>
+            </span>
+        </span>
+        <span class="centerrow-subbox" style="margin-left: -1px; border-left: 1px solid;">
+            <span class="centerrow-subbox-header">Shuffle</span>
+            <span class="centerrow-subbox-column">
+                <span class="toggleable toggle-off" id="ks">Kokiri Sword</span>
+                <span class="toggleable toggle-off" id="ocarina">Ocarina</span>
+                <span class="toggleable toggle-off" id="egg">Weird Egg</span>
+                <span class="toggleable toggle-off" id="card">Gerudo Card</span>
+            </span>
+            <span class="centerrow-subbox-column">
+                <span class="toggleable toggle-off" id="beans">Beans</span>
+                <span class="toggleable toggle-off" id="medicarp">Medi/Carp</span>
+                <span class="toggleable toggle-off" id="chus">Logical Chus</span>
+                <span class="toggleable toggle-off" id="csmc">CSMC</span>
+            </span>
+        </span>
+    </span>
+
+    <!-- Bonus Settings row -->
+    <span class="finalrow">
+        <span class="progressive toggle-off" id="pools">Item Pool</span>
+        <span class="progressive toggle-off" id="hintsreq">Hints Req.</span>
+        <span class="progressive toggle-off" id="dmg">Dmg</span>
+        <span class="toggleable toggle-off" id="hero">Hero Mode</span>
+    </span>
+
+    <!-- ER Row -->
+    <span class="er-box">
+        <span class="er-header">
+            <div class="classless-toggle toggle-off" style="display: inline;" id="mixed">Mixed Pools</div> Entrance Randomizer
+        </span>
+        <span class="er-subbox">
+            <span class="toggleable toggle-off" id="spawns">Spawns</span>
+            <span class="toggleable toggle-off" id="indoor">Indoor</span>
+            <span class="toggleable toggle-off" id="grotto">Grotto</span>
+            <span class="toggleable toggle-off" id="dungeon">Dungeon</span>
+            <span class="toggleable toggle-off" id="ow">Overworld</span>
+            <span class="toggleable toggle-off" id="warps">Warps</span>
+        </span>
+    </span>
+</div>
+
+<div class="room-controls">
+    <input id="password" type="text" placeholder="Password" />
+    <button id="setPasscode" onclick="set_password()">Initialize room w/passcode</button>
+    <button id="resetRoom" onclick="reset_firebase()">Reset room</button>
+    <div id="ownerControls"><button id="destroyRoom" onclick="destroy_firebase()">Destroy room</button></div>
+  </div>
+
+</main></body>
+</html>

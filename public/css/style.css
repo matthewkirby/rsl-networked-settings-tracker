@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: rgb(16, 16, 16);
+  color: white;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 14pt;
+}
+
+main {
+  width: 500px;
+}
+
+/* Full container */
+.fullframe {
+  width: auto;
+  margin: 0px;
+}
+
+/* Top row */
+.toprow {
+  display: flex;
+  width: auto;
+  font-size: 16pt;
+  padding: 3px;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.toprow-subbox {
+
+}
+
+.toprow-bridge-name {
+  border-right: 1px solid;
+  padding: 3px 10px;
+}
+
+
+.toprow-gbk-name {
+  border-left: 1px solid;
+  padding: 3px 10px;
+}
+
+
+/* Sanities and Shuffle boxes */
+.centerrow {
+  display: flex;
+  width: auto;
+  padding: 3px;
+  margin: -1 0 -1 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.centerrow-subbox {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 250px;
+  margin: -3px 0;
+  padding: 3px;
+}
+
+.centerrow-subbox-header {
+  text-align: center;
+  text-decoration: underline;
+  flex: 0 1 250px;
+}
+
+.centerrow-subbox-column {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+/* Final row */
+.finalrow {
+  display: flex;
+  width: auto;
+  padding: 3px;
+}
+
+/* Entrance rando */
+.er-box {
+  display: flex;
+  width: auto;
+  padding: 5px;
+  flex-direction: column;
+}
+
+.er-header {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.er-subbox {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Button types */
+.toggleable {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.progressive {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.counter {
+
+}
+
+.toggle-off {
+  opacity: 20%;
+}
+
+/* For Firebase connection */
+#notInitialized {
+  position: absolute;
+  background: red;
+  color: white;
+}
+
+.room-controls {
+  margin: 20px;
+}
+
+.room-controls button {
+  margin: 10px 0;
+  display: block;
+}
