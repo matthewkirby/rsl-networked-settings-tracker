@@ -95,7 +95,12 @@ main {
 
 .er-header {
   text-align: center;
+  /* text-decoration: underline; */
+}
+
+.er-header-uline {
   text-decoration: underline;
+  display: inline;
 }
 
 .er-subbox {
@@ -119,7 +124,7 @@ main {
 }
 
 .toggle-off {
-  opacity: 20%;
+  color: rgba(255, 255, 255, 0.2);
 }
 
 /* For Firebase connection */

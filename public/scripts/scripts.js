@@ -3,7 +3,7 @@ var progdict = {
     "gbkcondition": ["???", "Keysy", "Vanilla", "Ganon's Castle", "Overworld", "Any Dung.", "Keysanity", "LACS: Vanilla", "Stones", "Medallions", "Dungeons", "Spiders", "Triforce"],
     "songs": ["Songs", "V. Songs", "Dung. Songs", "Songsanity"],
     "shops": ["Shops", "Shops 0", "Shops 1", "Shops 2", "Shops 3", "Shops 4", "Shops Rand"],
-    "spiders": ["Spiders", "OW Skulls", "Dung. Skulls", "Skullsanity"],
+    "spiders": ["Skulltulas", "OW Skulls", "Dung. Skulls", "Skullsanity"],
     "scrubs": ["Scrubs", "Cheap Scrubs", "V. Scrubs", "Rand Scrubs"],
     "cows": ["Cows", "No Cows", "Cowsanity"],
     "sks": ["SKs", "SK Keysy", "V. SKs", "Dung. SKs", "OW SKs", "Any Dung. SKs", "SKeysanity"],
